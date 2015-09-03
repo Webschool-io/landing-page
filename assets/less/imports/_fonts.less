@@ -1,0 +1,49 @@
+/**
+*
+* helvetica-neue-regular
+*
+**/
+
+@font-face {
+    font-family: 'helvetica-neue-regular';
+    src: url('fonts/helvetica-neue/regular/HelveticaNeueRegular.eot');
+    src: url('fonts/helvetica-neue/regular/HelveticaNeueRegular.eot?#iefix') format('embedded-opentype'),
+         url('fonts/helvetica-neue/regular/HelveticaNeueRegular.woff') format('woff'),
+         url('fonts/helvetica-neue/regular/HelveticaNeueRegular.ttf') format('truetype'),
+         url('fonts/helvetica-neue/regular/HelveticaNeueRegular.svg#HelveticaNeueRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/**
+*
+* helvetica-neue-bold
+*
+**/
+
+@font-face {
+    font-family: 'helvetica-neue-bold';
+    src: url('fonts/helvetica-neue/bold/HelveticaNeueBold.eot');
+    src: url('fonts/helvetica-neue/bold/HelveticaNeueBold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/helvetica-neue/bold/HelveticaNeueBold.woff') format('woff'),
+         url('fonts/helvetica-neue/bold/HelveticaNeueBold.ttf') format('truetype'),
+         url('fonts/helvetica-neue/bold/HelveticaNeueBold.svg#HelveticaNeueBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/**
+*
+* MIXIN FUNCTIONS FONTS
+*
+**/
+
+.font(@fontName, @fontSize, @fontColor) {
+    font-family: @fontName;
+    font-size: @fontSize;
+    color: @fontColor;
+}

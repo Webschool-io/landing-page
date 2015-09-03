@@ -1,0 +1,193 @@
+/*=============================================
+=    Lets start with some instructions of:    =
+=============================================*/
+
+
+/*===============================
+=            IMPORTS            =
+===============================*/
+
+/**
+*
+* RESET
+*
+**/
+
+@import "imports/_reset";
+
+
+/**
+*
+* IMAGES PATH
+*
+**/
+
+@images: "../img";
+
+
+/**
+*
+* VARIABLES
+*
+**/
+
+@import "imports/_variables";
+
+
+/**
+*
+* VARIABLES
+*
+**/
+
+@import "imports/_mixins";
+
+
+/**
+*
+* GRID SYSTEM
+*
+**/
+
+@import "imports/_grid-system";
+
+// the grid system file always have to be the first @import 'cause if u need 
+// to overwriter somethig like fonts, maths units, props values, etc u dont have 
+// to use the ugly !important, so dont use it in this code fucker.
+
+// @include font($fontName, $fontSize, $fontColor);
+// note that its work just after import _fonts.scss with your right configs.
+
+// -------------
+
+
+/**
+*
+* FONTS
+*
+**/
+
+@import "imports/_fonts";
+
+// to add a font use this LESS .mixin:
+
+// .(@fontName, @fontSize, @fontColor);
+// note that its work just after import _fonts with right configs.
+
+// -------------
+
+
+/**
+*
+* HELPERS
+*
+**/
+
+@import "imports/_helpers";
+
+
+/*-----  End of IMPORTS  ------*/
+
+
+
+/*===================================
+=            APPLICATION            =
+===================================*/
+
+body {
+	&::-webkit-scrollbar {
+	    width: 6px;
+	}
+	 
+	&::-webkit-scrollbar-track {
+	    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+	    border-radius: 10px;
+	}
+	 
+	&::-webkit-scrollbar-thumb {
+	    border-radius: 10px;
+	    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+	}
+}
+
+.@{app-container} {
+
+	width: 100%; height: 100%;
+
+	/**
+	*
+	* app
+	*
+	**/
+
+	.square-molecule { 
+		width: 540px;
+		height: 650px;
+		position: relative;
+		perspective: 800px;
+
+		margin: 0 auto;
+
+		.square-atom {
+			width: 540px;
+			height: 650px;
+			position: absolute;
+			transform-style: preserve-3d;
+			// transition: transform .4s ease;
+			z-index: 100;
+
+			.transition(
+				~"transform .4s ease" 
+			);
+
+			.transform(
+				rotateY(0deg)
+			);
+
+
+			&:hover, &:focus {
+				transform: rotateY(180deg);
+			}
+
+			figure {
+				margin: 0;
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				backface-visibility: hidden;
+			}
+			.front {
+				background: red;
+			}	
+		}
+
+		.form {
+			width: 540px !important;
+			height: 650px !important;
+			
+			// .opacity(0);
+
+			.transform(
+				translate(0, -100%)
+			);
+
+			.transition(
+				-webkit-opacity .15s ease-out, -webkit-transform .3s cubic-bezier(.17,.67,.2,1.3);
+			);
+
+			&.open {
+				.opacity(1);
+
+				.transform(
+					translate(0, 0%)
+				);
+			}
+		}
+	}
+	
+			
+}
+
+/*-----  End of APPLICATION  ------*/
+

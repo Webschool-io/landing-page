@@ -1,0 +1,110 @@
+/**
+*
+* MIXINS
+*
+**/
+
+
+/*==================================================
+=            transitions AND transforms            =
+==================================================*/
+
+/**
+	
+	Some instrutions:
+	- Single props: A ~ prefix to escape the resulting expression (i.e. stop LESS from enclosing it in a string): 
+		-> Usage example: 
+		   .transition(~"width 0.32s ease 0.8s");
+
+	- Multiple props: Without ~ prefix. 
+		-> Usage example:
+		   .transition(transform 0.4s cubic-bezier(.11,.69,.25,1.22) 0.3s, opacity 0.4s ease 0.3s); 
+
+**/
+
+.transform(@value1,@value2:X,...){	
+	@value: ~`"@{arguments}"
+    					.replace(/[\[\]]|\,\sX/g, '')
+    					.replace('-webkit-', '')`;
+    @valueWebKit: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+
+	-webkit-transform:   @valueWebKit;
+	-moz-transform: 	 @value;
+	-ms-transform: 		 @value;
+	-o-transform: 		 @value;
+	transform: 			 @value;
+
+	-webkit-backface-visibility: hidden;
+}
+
+.transition(@value1,@value2:X,...) {
+    @value: ~`"@{arguments}"
+    					.replace(/[\[\]]|\,\sX/g, '')
+    					.replace('-webkit-', '')`;
+    @valueWebKit: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
+
+    -webkit-transition: @valueWebKit;
+    -moz-transition: @value;
+    -o-transition: @value;
+    transition: @value;
+
+    -webkit-backface-visibility: hidden;
+}
+
+/*-----  End of transitions AND transforms  ------*/
+
+
+
+
+.opacity (@opacity) {
+	-webkit-opacity: 	@opacity;
+	-moz-opacity: 		@opacity;
+	-ms-opacity: 		@opacity;
+	-o-opacity: 		@opacity;
+	opacity: 	     	@opacity;
+}
+
+
+// other
+.scale (@factor) {
+	-webkit-transform: scale(@factor);
+	-moz-transform: 	 scale(@factor);
+	-ms-transform: 		 scale(@factor);
+	-o-transform: 		 scale(@factor);
+}
+.rotate (@deg) {
+	-webkit-transform: rotate(@deg);
+	-moz-transform: 	 rotate(@deg);
+	-ms-transform: 		 rotate(@deg);
+	-o-transform: 		 rotate(@deg);
+}
+.skew (@deg, @deg2) {
+	-webkit-transform:       skew(@deg, @deg2);
+	-moz-transform: 	 skew(@deg, @deg2);
+	-ms-transform: 		 skew(@deg, @deg2);
+	-o-transform: 		 skew(@deg, @deg2);
+}
+.translate (@x, @y:0) {
+	-webkit-transform:       translate(@x, @y);
+	-moz-transform: 	 translate(@x, @y);
+	-ms-transform: 		 translate(@x, @y);
+	-o-transform: 		 translate(@x, @y);
+}
+.translate3d (@x, @y: 0, @z: 0) {
+	-webkit-transform:       translate3d(@x, @y, @z);
+	-moz-transform: 	 translate3d(@x, @y, @z);
+	-ms-transform: 		 translate3d(@x, @y, @z);
+	-o-transform: 		 translate3d(@x, @y, @z);
+}
+.perspective (@value: 1000) {
+	-webkit-perspective: 	@value;
+	-moz-perspective: 	@value;
+	-ms-perspective: 	@value;
+	perspective: 		@value;
+}
+.transform-origin (@x:center, @y:center) {
+	-webkit-transform-origin: @x @y;
+	-moz-transform-origin:    @x @y;
+	-ms-transform-origin:     @x @y;
+	-o-transform-origin:      @x @y;
+}
